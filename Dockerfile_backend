@@ -1,0 +1,17 @@
+# Use MongoDB image as base image for backend
+FROM mongo:6.3.0
+
+# Set working directory
+WORKDIR /app/quirknotes/backend
+
+# Copy backend package files
+COPY quirknotes/backend/package*.json ./
+
+# Install dependencies as needed
+RUN npm install
+
+# Copy in source code
+COPY quirknotes/backend ./
+
+# Run backend
+RUN mongod
