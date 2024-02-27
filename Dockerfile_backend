@@ -1,5 +1,13 @@
-# Use the official Node.js image as the base image for frontend
-FROM node:20.0.0-alpine AS frontend
+# Use the latest mongodb image to setup backend
+FROM mongo:latest AS backend
+
+# Setup Node.js and npm
+FROM node:20.0.0-alpine AS node-backend
+
+#install node.js and npm
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    npm
 
 # Set working directory
 WORKDIR /app/quirknotes/backend
@@ -15,5 +23,8 @@ RUN npm install --save-dev nodemon
 # Copy in source code
 COPY quirknotes/backend ./
 
-# Run backend
-RUN npm run start &
+# Expose port 4000
+EXPOSE 4000
+
+# Command to run the backend server
+CMD ["npm", "start"]
