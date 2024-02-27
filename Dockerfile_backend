@@ -4,11 +4,6 @@ FROM mongo:latest AS backend
 # Setup Node.js and npm
 FROM node:20.0.0-alpine AS node-backend
 
-#install node.js and npm
-RUN apt-get update && apt-get install -y \
-    nodejs \
-    npm
-
 # Set working directory
 WORKDIR /app/quirknotes/backend
 
