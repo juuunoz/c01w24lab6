@@ -1,5 +1,5 @@
-# Use MongoDB image as base image for backend
-FROM mongo:6.3.0
+# Use the official Node.js image as the base image for frontend
+FROM node:20.0.0-alpine AS frontend
 
 # Set working directory
 WORKDIR /app/quirknotes/backend
@@ -8,10 +8,12 @@ WORKDIR /app/quirknotes/backend
 COPY quirknotes/backend/package*.json ./
 
 # Install dependencies as needed
-RUN npm install
+RUN npm install express mongodb bcrypt jsonwebtoken
+
+RUN npm install --save-dev nodemon
 
 # Copy in source code
 COPY quirknotes/backend ./
 
 # Run backend
-RUN mongod
+RUN npm run start &
