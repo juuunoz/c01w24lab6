@@ -1,8 +1,5 @@
-# Use the latest mongodb image to setup backend
-FROM mongo:latest AS backend
-
-# Setup Node.js and npm
-FROM node:20.0.0-alpine AS node-backend
+# Use MongoDB image as base image for backend
+FROM mongo:6.3.0
 
 # Set working directory
 WORKDIR /app/quirknotes/backend
@@ -12,14 +9,10 @@ COPY quirknotes/backend/package*.json ./
 
 # Install dependencies as needed
 RUN npm install express mongodb bcrypt jsonwebtoken
-
 RUN npm install --save-dev nodemon
 
 # Copy in source code
 COPY quirknotes/backend ./
 
-# Expose port 4000
-EXPOSE 4000
-
-# Command to run the backend server
-CMD ["npm", "start"]
+# Run backend
+RUN npm run dev
