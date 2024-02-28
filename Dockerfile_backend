@@ -18,4 +18,4 @@ COPY quirknotes/backend ./
 EXPOSE 4000
 
 # Run backend
-RUN npm run
+RUN npm run start &
