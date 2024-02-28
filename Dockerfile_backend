@@ -8,8 +8,7 @@ WORKDIR /app/quirknotes/backend
 COPY quirknotes/backend/package*.json ./
 
 # Install dependencies as needed
-RUN npm install express mongodb bcrypt jsonwebtoken
-RUN npm install --save-dev nodemon
+RUN npm install
 
 # Copy in source code
 COPY quirknotes/backend ./
@@ -18,4 +17,4 @@ COPY quirknotes/backend ./
 EXPOSE 4000
 
 # Run backend
-RUN npm run start &
+CMD ["npm", "start"]
