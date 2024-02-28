@@ -1,6 +1,7 @@
 services:
   backend:
     build:
+      image: juuunoz/quirknotes_backend:latest
       context: .
       dockerfile: Dockerfile_backend
       target: backend
