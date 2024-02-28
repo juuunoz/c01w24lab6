@@ -14,8 +14,8 @@ RUN npm install --save-dev nodemon
 # Copy in source code
 COPY quirknotes/backend ./
 
-# Use MongoDB image as base image for backend
-FROM mongo:latest
+# Expose a port for backend server
+EXPOSE 4000
 
 # Run backend
-RUN npm run dev
+RUN npm run
