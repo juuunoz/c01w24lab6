@@ -1,5 +1,5 @@
 # Use MongoDB image as base image for backend
-FROM mongo:recent
+FROM mongo:latest
 
 # Set working directory
 WORKDIR /app/quirknotes/backend
