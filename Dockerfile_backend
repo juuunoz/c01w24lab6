@@ -1,11 +1,6 @@
 # Use Node image for npm to install dependencies
 FROM node:20.0.0-alpine AS backend
 
-#install node.js and npm
-RUN apt-get update && apt-get install -y \
-    nodejs \
-    npm
-
 # Set working directory
 WORKDIR /app/quirknotes/backend
 
