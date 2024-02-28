@@ -5,6 +5,8 @@ services:
       - "4000:4000"
     depends_on:
       - mongodb
+    environment:
+      - ENV=Docker
 
   mongodb:
     image: mongo:latest
@@ -14,4 +16,4 @@ services:
   frontend:
     image: juuunoz/quirknotes_frontend:latest
     ports:
-      - "3000:3000"
+      - "3000:80"
